@@ -41,52 +41,6 @@ int manhattanDistance (const PuzzleState& currState, const PuzzleState& goalStat
     return manhattanDistance;
 }
 
-// void Astar (const PuzzleState& startState, const PuzzleState& goalState) {
-//     set<vector<int>> visited;    // stores the visited state's tiles in order
-//     vector<PuzzleState> nextStates;
-//     //vector<pair<PuzzleState, MoveType>> nextStates;
-
-//     if (startState == goalState) {
-//         cout << "Start state is the goal state." << endl;
-//         return;
-//     }
-
-//     PuzzleState start = startState;
-//     start.setG(0);
-//     start.setF(manhattanDistance(start, goalState));
-//     openList.push(start);
-
-//     PuzzleState currState;
-
-//     while(true) {
-//         currState = openList.top();
-//         openList.pop();
-
-//         if (currState.getTiles() == goalState.getTiles()) {
-//             cout << "Current State: " << endl << endl;
-//             cout << currState << endl;
-//             return;
-//         }
-
-//         visited.insert(currState.getTiles());
-//         nextStates = {currState.moveBlankDown(),
-//                       currState.moveBlankLeft(),
-//                       currState.moveBlankRight(),
-//                       currState.moveBlankUp()};
-
-//         for (auto& state : nextStates) {
-//             if (state == currState) continue;
-
-//             if (visited.find(state.getTiles()) == visited.end()) {
-//                 state.setG(state.getG() + 1);
-//                 state.setF(state.getG() + manhattanDistance(state, goalState));
-//                 openList.push(state);
-//             }
-//         }
-//     }
-// }
-
-
 int printPath(const set<PuzzleMove>& moves, const PuzzleMove& finalMove) {
     vector<PuzzleMove> path;
     PuzzleMove currMove = finalMove;
