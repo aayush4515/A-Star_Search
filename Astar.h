@@ -24,15 +24,21 @@ using namespace std;
 
 int printPath(PuzzleMove* move);
 
+// struct ComparePuzzleState {
+//     bool operator()(const pair<PuzzleState, MoveType>& a, const pair<PuzzleState, MoveType>& b) const {
+//         return a.first.getF() > b.first.getF(); // use the PuzzleState part of the pair
+//     }
+// };
+
 struct ComparePuzzleState {
-    bool operator()(const pair<PuzzleState, MoveType>& a, const pair<PuzzleState, MoveType>& b) const {
-        return a.first.getF() > b.first.getF(); // use the PuzzleState part of the pair
-    }
+     bool operator()(const PuzzleState& a, const PuzzleState& b) const {
+         return a.getF() > b.getF(); // use the PuzzleState part of the pair
+     }
 };
 
 // create a min-heap priority queue named openList
-//extern priority_queue<PuzzleState, vector<PuzzleState>, ComparePuzzleState> openList;
-extern priority_queue<pair<PuzzleState, MoveType>, vector<pair<PuzzleState, MoveType>>, ComparePuzzleState> openList;
+extern priority_queue<PuzzleState, vector<PuzzleState>, ComparePuzzleState> openList;
+//extern priority_queue<pair<PuzzleState, MoveType>, vector<pair<PuzzleState, MoveType>>, ComparePuzzleState> openList;
 
 // computes the Manhattan Distance for a single tile
 int singleTileManhattanDistance (const PuzzleState& currState, const PuzzleState& goalState, const int currTileIndex);
