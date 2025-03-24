@@ -4,45 +4,6 @@ priority_queue<PuzzleState, vector<PuzzleState>, ComparePuzzleState> openList;
 
 //priority_queue<pair<PuzzleState, MoveType>, vector<pair<PuzzleState, MoveType>>, ComparePuzzleState> openList;
 
-// int printPath(PuzzleMove* move) {
-//     vector<PuzzleMove*> path;               // stores the path from current move upto the root move
-//     // store the path
-//     while (move != nullptr) {
-//         path.push_back(move);
-//         move = move->getParent();
-//     }
-
-//     // reverse the path for printing
-//     reverse(path.begin(), path.end());
-
-//     // print the path
-//     cout << "\nSolution:" << endl;
-//     for (const auto& node : path) {
-//         int i = node->getMoveName();
-//         string moveName = "";
-//         switch (i) {
-//             case 0:
-//                 moveName = "down";
-//                 break;
-//             case 1:
-//                 moveName = "left";
-//                 break;
-//             case 2:
-//                 moveName = "right";
-//                 break;
-//             case 3:
-//                 moveName = "up";
-//                 break;
-//             default:
-//                 break;
-//         }
-//         cout << moveName << endl << endl;
-//         cout << node->getState() << endl;
-//     }
-//     return path.size() - 1;
-// }
-
-
 int singleTileManhattanDistance (const PuzzleState& currState, const PuzzleState& goalState, const int currTileIndex) {
     int distance = 0;
 
