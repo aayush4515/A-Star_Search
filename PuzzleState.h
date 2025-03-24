@@ -35,51 +35,13 @@ class PuzzleState
 			  blank_position_col(rhs.blank_position_col)
 			  { }
 
-	 // returns the index of a particular tile
-	 auto getTileIndex (int tile) const {
-		auto it = find(tiles.begin(), tiles.end(), tile);
-		return distance(tiles.begin(), it);
-	 }
-
-	 // return a tile at the index i
-	 int getCurrTile(int i) const {
-		return tiles.at(i);
-	 }
-	 // get the vector size
-	 int getTilesSize () const {
-		return tiles.size();
-	 }
-
-	 // get the number of rows and columns
-	 int getNumRows () const {
-		return rows;
-	 }
-	 int getNumCols() const {
-		return cols;
-	 }
-
-	 // get g
-	 int getG() const{
-		return g;
-	 }
-	 // get f
-	 int getF() const {
-		return f;
-	 }
-
-	 // set g
-	 void setG(int g) {
-		this->g = g;
-	 }
-
-	 // set f
-	 void setF(int f) {
-		this->f = f;
-	 }
-
-	 vector<int> getTiles () const {
-		return this->tiles;
-	 }
+	 // getters
+	 int getTileIndex (int tile) const;
+	 int getCurrTile(int i) const;
+	 int getTilesSize () const;
+	 int getNumRows () const;
+	 int getNumCols() const;
+	 vector<int> getTiles () const;
 
 	 bool operator==(const PuzzleState & rhs) const;
 	 bool operator!=(const PuzzleState & rhs) const;
@@ -96,41 +58,25 @@ class PuzzleState
 	 PuzzleState moveBlankRight();
 
 	 void read( istream & in );
-	 void print( ostream & out);
+	 void print( ostream & out) const;
 
-	// test prints
-
-	//  void testPrint() {
-	// 	// print tiles, blank position, rows and cols from the input state
-    // 	cout << "Tiles: ";
-    // 	for (int i = 0; i < tiles.size(); i++) {
-    //     cout << tiles.at(i) << " ";
-    // 	}
-    // 	cout << endl;
-
-	// 	cout << "The number of rows is: " << rows << endl;
-	// 	cout << "The number of columns is: " << cols << endl;
-	// 	cout << "The row of blank tile is: " << blank_position_row << endl;
-	// 	cout << "The column of blank tile is: " << blank_position_col << endl;
-	//  }
-
-     static PuzzleState  NullState;
+     static PuzzleState NullState;
   private:
 	  int rows;
 	  int cols;
       vector<int> tiles;
       int blank_position_row;
 	  int blank_position_col;
-	  // identifiers for the A* search algorithm
-	  int f = 0;
-	  int g = 0;
-	  //int h = 0;
 };
 istream & operator>>( istream &  in, PuzzleState & rhs );
-ostream & operator<<( ostream & out, PuzzleState & rhs );
+ostream & operator<<( ostream & out, const PuzzleState & rhs );
 
 extern int numRowsCols;
 extern PuzzleState startState;
 extern PuzzleState goalState;
+
+inline bool operator<(const PuzzleState& lhs, const PuzzleState& rhs) {
+    return lhs.getTiles() < rhs.getTiles(); // Compare based on tile configuration
+}
 
 #endif

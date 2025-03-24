@@ -23,10 +23,10 @@ int main() {
     startState = PuzzleState(numRowsCols, numRowsCols);
     goalState = PuzzleState(numRowsCols, numRowsCols);
 
-    cout << "Enter Start State row by row:" << endl;
+    cout << "Enter Start State row by row: ";
     cin >> startState;
 
-    cout << "\nEnter Goal State row by row:" << endl;
+    cout << "\nEnter Goal State row by row: ";
     cin >> goalState;
 
     // // print the num rows and cols, start state and the goal state after user input

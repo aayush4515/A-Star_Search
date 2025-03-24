@@ -31,6 +31,33 @@ const PuzzleState & PuzzleState::operator=( const PuzzleState & rhs ) {
     return *this;
 }
 
+// getters
+
+int PuzzleState::getTileIndex (int tile) const {
+    auto it = find(tiles.begin(), tiles.end(), tile);
+    return distance(tiles.begin(), it);
+}
+// return a tile at the index i
+int PuzzleState::getCurrTile(int i) const {
+    return tiles.at(i);
+}
+// get the vector size
+int PuzzleState::getTilesSize () const {
+    return tiles.size();
+}
+
+// get the number of rows and columns
+int PuzzleState::getNumRows () const {
+    return rows;
+}
+int PuzzleState::getNumCols() const {
+    return cols;
+}
+
+vector<int> PuzzleState::getTiles () const {
+    return this->tiles;
+}
+
 // bool function definitons
 bool PuzzleState::canMoveUp() {
     return blank_position_row > 0;
@@ -67,12 +94,6 @@ PuzzleState PuzzleState::moveBlankUp() {
     // decrease blank_position_row of the new state by 1
     newState.blank_position_row -= 1;
 
-    // increase g by 1
-    //newState.g = this->g + 1;
-
-    // compute and update f; f = g + h(manhattan distance from newState to the goalState)
-    //newState.f = newState.g + manhattanDistance(newState, goalState);
-
     // return the new state
     return newState;
 }
@@ -87,8 +108,6 @@ PuzzleState PuzzleState::moveBlankDown() {
     int newBlankPosition = currBlankIndex + cols;
     swap(newState.tiles.at(currBlankIndex), newState.tiles.at(newBlankPosition));
     newState.blank_position_row += 1;
-    //newState.g = this->g + 1;
-    //newState.f = newState.g + manhattanDistance(newState, goalState);
 
     return newState;
 }
@@ -103,8 +122,6 @@ PuzzleState PuzzleState::moveBlankLeft() {
     int newBlankPosition = currBlankIndex - 1;
     swap(newState.tiles.at(currBlankIndex), newState.tiles.at(newBlankPosition));
     newState.blank_position_col -= 1;
-    //newState.g = this->g + 1;
-    //newState.f = newState.g + manhattanDistance(newState, goalState);
 
     return newState;
 }
@@ -119,8 +136,6 @@ PuzzleState PuzzleState::moveBlankRight() {
     int newBlankPosition = currBlankIndex + 1;
     swap(newState.tiles.at(currBlankIndex), newState.tiles.at(newBlankPosition));
     newState.blank_position_col += 1;
-    //newState.g = this->g + 1;
-    //newState.f = newState.g + manhattanDistance(newState, goalState);
 
     return newState;
 }
@@ -138,7 +153,7 @@ void PuzzleState::read(istream & in) {
     }
 }
 
-void PuzzleState::print( ostream & out) {
+void PuzzleState::print( ostream & out) const {
     for (int i = 0; i < tiles.size(); i++) {
         out << tiles.at(i);
         if ((i + 1) % cols == 0) {
@@ -155,7 +170,7 @@ istream & operator>>( istream &  in, PuzzleState & rhs ) {
     return in;
 }
 
-ostream & operator<<( ostream & out, PuzzleState & rhs ) {
+ostream & operator<<( ostream & out, const PuzzleState & rhs ) {
     rhs.print(out);
     return out;
 }

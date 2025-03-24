@@ -10,22 +10,22 @@ class PuzzleMove {
 public:
 	PuzzleMove() { }
 
-	PuzzleMove(PuzzleState s, PuzzleMove* p, MoveType m) : state(s),parent(p),move(m) { }
+	PuzzleMove(PuzzleState s, PuzzleState p, MoveType m) : state(s),parent(p),move(m) { }
 
-	void setParent(PuzzleMove* parent) {
-		this->parent = parent;
-	}
+    const PuzzleState & getState() const { 	return state; }
 
-    PuzzleState & getState() { 	return state; }
+	const PuzzleState getParent() const { return parent; }
 
-	PuzzleMove* getParent() { return parent; }
-
-	MoveType getMoveName() { return move; }
+	MoveType getMoveName() const { return move; }
 
 private:
 	PuzzleState state;
-	PuzzleMove* parent;
+	PuzzleState parent;
 	MoveType move;
 };
+
+inline bool operator<(const PuzzleMove& lhs, const PuzzleMove& rhs) {
+    return lhs.getState() < rhs.getState(); // Compare based on resulting state
+}
 
 #endif
