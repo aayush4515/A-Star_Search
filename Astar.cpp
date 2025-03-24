@@ -1,11 +1,7 @@
 #include "Astar.h"
 #include "PuzzleState.h"
 
-//priority_queue<PuzzleState, vector<PuzzleState>, ComparePuzzleState> openList;
-
 priority_queue<pair<PuzzleState, pair<int, int>>, vector<pair<PuzzleState, pair<int,int>>>, ComparePuzzleState> openList;
-
-//priority_queue<pair<PuzzleState, MoveType>, vector<pair<PuzzleState, MoveType>>, ComparePuzzleState> openList;
 
 int singleTileManhattanDistance (const PuzzleState& currState, const PuzzleState& goalState, const int currTileIndex) {
     int distance = 0;
