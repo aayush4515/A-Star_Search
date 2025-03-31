@@ -37,7 +37,7 @@ int manhattanDistance (const PuzzleState& currState, const PuzzleState& goalStat
     return manhattanDistance;
 }
 
-int printPath(const set<PuzzleMove>& moves, const PuzzleMove& finalMove) {
+int printPath(const set<PuzzleMove>& moves, const PuzzleMove& finalMove, const PuzzleState& startState) {
     vector<PuzzleMove> path;
     PuzzleMove currMove = finalMove;
 
@@ -123,7 +123,7 @@ void Astar (const PuzzleState& startState, const PuzzleState& goalState) {
                 cout << "\nSolution:" << endl;
                 PuzzleMove finalMove = move;
                 // call the printPath function with finalMove as the parameter
-                int length = printPath(moves, finalMove);
+                int length = printPath(moves, finalMove, startState);
                 cout << "Steps to goal: " << length << endl;
                 return;
             }

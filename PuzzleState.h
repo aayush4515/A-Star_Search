@@ -11,7 +11,6 @@
 
 using namespace std;
 
-
 class PuzzleState
 {
   public:
@@ -71,9 +70,9 @@ class PuzzleState
 istream & operator>>( istream &  in, PuzzleState & rhs );
 ostream & operator<<( ostream & out, const PuzzleState & rhs );
 
-extern int numRowsCols;
-extern PuzzleState startState;
-extern PuzzleState goalState;
+// extern int numRowsCols;
+// extern PuzzleState startState;
+// extern PuzzleState goalState;
 
 inline bool operator<(const PuzzleState& lhs, const PuzzleState& rhs) {
     return lhs.getTiles() < rhs.getTiles(); // Compare based on tile configuration

@@ -1,9 +1,9 @@
 #include "PuzzleState.h"
 #include "Astar.h"
 
-int numRowsCols = 0;
-PuzzleState startState(0, 0);
-PuzzleState goalState(0, 0);
+// int numRowsCols = 0;
+// PuzzleState startState(0, 0);
+// PuzzleState goalState(0, 0);
 
 // equal operator definition
 bool PuzzleState::operator==(const PuzzleState & rhs) const {

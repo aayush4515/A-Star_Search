@@ -20,8 +20,8 @@ int main() {
     cout << endl;
 
     // initialize the start state and goal state
-    startState = PuzzleState(numRowsCols, numRowsCols);
-    goalState = PuzzleState(numRowsCols, numRowsCols);
+    PuzzleState startState = PuzzleState(numRowsCols, numRowsCols);
+    PuzzleState goalState = PuzzleState(numRowsCols, numRowsCols);
 
     cout << "Enter Start State row by row: ";
     cin >> startState;
@@ -29,18 +29,8 @@ int main() {
     cout << "\nEnter Goal State row by row: ";
     cin >> goalState;
 
-    // // print the num rows and cols, start state and the goal state after user input
-    // cout << "Number of rows and columns: " << numRowsCols << endl;
-    // cout << "Start State:" << endl;
-    // cout << startState << endl;
-    // cout << "Goal state:" << endl;
-    // cout << goalState << endl;
-
     // call A*
     Astar(startState, goalState);
-
-    // // print out the Mahhattan Distance for checking
-    // cout << "Manhattan Distance is: " << manhattanDistance(startState, goalState) << endl;
 
     return 0;
 }
